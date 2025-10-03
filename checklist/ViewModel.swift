@@ -7,8 +7,8 @@
 
 import Foundation
 
-var inProgressTasks: [String] = []
-var completeTasks: [String] = []
+@Published var inProgressTasks: [String] = []
+@Published var completeTasks: [String] = []
 
 class ViewModel: ObservableObject {
     
@@ -26,9 +26,9 @@ class ViewModel: ObservableObject {
     
     func swapToComplete(task: String) -> Void {
         if let index = inProgressTasks.firstIndex(of: task) {
-                   inProgressTasks.remove(at: index)
-                   completeTasks.append(task)
-               }
+                    inProgressTasks.remove(at: index)
+                    completeTasks.append(task)
+                }
         return
     }
 }
