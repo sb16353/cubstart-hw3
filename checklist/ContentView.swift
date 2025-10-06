@@ -51,7 +51,7 @@ struct ChecklistView: View {
                 ForEach(inProgressTasks, id: \.self) { task in
                     Button(action: {
                         if let index = inProgressTasks.firstIndex(of: task) {
-                            completeTasks.append(task)
+                            completedTasks.append(task)
                             inProgressTasks.remove(at: index)
                         }
                     })
@@ -63,9 +63,24 @@ struct ChecklistView: View {
                     }
                 }
             }
-        }
-    }
-}
+            Section(header: Text("Completed Tasks").textCase(nil)) {
+                            ForEach(completedTasks, id: \.self) { task in
+                                Button(action: {
+                                    if let index = completedTasks.firstIndex(of: task) {
+                                        inProgressTasks.append(task)
+                                        completedTasks.remove(at: index)
+                                    }
+                                }) {
+                                    HStack {
+                                        Image(systemName: "checkmark.circle")
+                                        Text(task)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
 
 
 struct ContentView: View {
