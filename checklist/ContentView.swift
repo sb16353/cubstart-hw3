@@ -42,8 +42,15 @@ struct HeaderView: View {
     }
 }
 struct ContentView: View {
+    @State var description = ""
+    @State var inProgressTasks: [String] = []
+    @State var completedTasks: [String] = []
     var body: some View {
-        Text("Hello, World!")
+            VStack {
+                HeaderView(description: $description)
+                inProgressTasks.append(description)
+                description = ""
+                ChecklistView(inProgressTasks: $inProgressTasks, completeTasks: $completedTasks)
     }
 }
 
