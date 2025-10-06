@@ -7,8 +7,8 @@
 
 import Foundation
 
-@Published var inProgressTasks: [String] = []
-@Published var completeTasks: [String] = []
+var inProgressTasks: [String] = []
+var completeTasks: [String] = []
 
 class ViewModel: ObservableObject {
     
